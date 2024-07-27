@@ -16,5 +16,9 @@ document.addEventListener('DOMContentLoaded',function(){
  let password = document.getElementById('password');
  let passwordvalue = password.value;
  password = password.trim(); 
+
+ let isValid = true
+
+ let messages = []
 })
  
