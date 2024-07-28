@@ -59,16 +59,20 @@ document.getElementById('registration-form').addEventListener('submit', function
   let isValid = true;
 
   // Get the input values
-  const name = document.getElementById('username').value;
+  const username = document.getElementById('username').value;
   const email = document.getElementById('email').value;
   const password = document.getElementById('password').value;
 
-  // Clear previous error messages
-  document.getElementById('form-feedback').innerHTML = '';
+  // Get the feedback container
+  const feedbackDiv = document.getElementById('form-feedback');
 
-  // Validate name
-  if (name.length < 3) {
-      messages.push('Name must be at least 3 characters long.');
+  // Clear previous messages
+  feedbackDiv.innerHTML = '';
+  feedbackDiv.className = ''; // Clear any previous class
+
+  // Validate username
+  if (username.length < 3) {
+      messages.push('Username must be at least 3 characters long.');
       isValid = false;
   }
 
@@ -84,18 +88,24 @@ document.getElementById('registration-form').addEventListener('submit', function
       isValid = false;
   }
 
-  // Display error messages
+  // Display error messages or success message
   if (!isValid) {
-      const errorMessagesDiv = document.getElementById('form-feedback');
-      errorMessagesDiv.style.display = 'block'
+      feedbackDiv.className = 'error'; // Apply error class
+      feedbackDiv.style.display = 'block'; // Show feedback container
       messages.forEach(message => {
           const p = document.createElement('p');
           p.className = 'error';
           p.textContent = message;
-          errorMessagesDiv.appendChild(p);
+          feedbackDiv.appendChild(p);
       });
-      event.preventDefault();
+      event.preventDefault(); // Prevent form submission if there are errors
+  } else {
+      feedbackDiv.className = 'success'; // Apply success class
+      feedbackDiv.style.display = 'block'; // Show feedback container
+      feedbackDiv.textContent = 'Registration Successful!';
+      event.preventDefault(); // Prevent form submission for demonstration purposes
   }
 });
+
 
  
