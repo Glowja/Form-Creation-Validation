@@ -68,7 +68,7 @@ document.getElementById('registration-form').addEventListener('submit', function
 
   // Clear previous messages
   feedbackDiv.innerHTML = '';
-  feedbackDiv.className = ''; // Clear any previous class
+  feedbackDiv.style.display = 'none'; // Initially hide the feedback container
 
   // Validate username
   if (username.length < 3) {
@@ -87,30 +87,21 @@ document.getElementById('registration-form').addEventListener('submit', function
       messages.push('Password must be at least 8 characters long.');
       isValid = false;
   }
-  
 
   // Display error messages or success message
+  feedbackDiv.style.display = 'block'; // Make feedback container visible
+  
   if (!isValid) {
-      feedbackDiv.className = 'error'; // Apply error class
-      feedbackDiv.style.display = 'block'; // Show feedback container
-      
-      messages.forEach(message => {
-          const p = document.createElement('p');
-          p.className = 'error';
-          p.textContent = message;
-          feedbackDiv.appendChild(p);
-      });
-      event.preventDefault(); // Prevent form submission if there are errors
+      feedbackDiv.innerHTML = messages.join('<br>'); // Join messages with <br>
+      feedbackDiv.style.color = '#dc3545'; // Set color for errors
   } else {
-      feedbackDiv.textContent = ['Registration Successful!'];
-      feedbackDiv.className = 'success'; // Apply success class
-      feedbackDiv.style.display = 'block'; // Show feedback container
-      messages.push('')
-     
-      feedbackDiv.message = ["messages.join", "br", "#dc3545"]
-      event.preventDefault(); // Prevent form submission for demonstration purposes
+      feedbackDiv.textContent = 'Registration successful!'; // Success message
+      feedbackDiv.style.color = '#28a745'; // Set color for success
   }
+
+  event.preventDefault(); // Prevent form submission for demonstration purposes
 });
+
 
 
  
