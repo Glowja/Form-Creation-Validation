@@ -8,6 +8,7 @@ document.addEventListener('DOMContentLoaded',function(){
  let username = document.getElementById('username');
  let usernamevalue = username.value;
  username = username.trim();
+ console.log(username)
 
  let email = document.getElementById('email');
  let emailvalue = email.value;
@@ -17,9 +18,18 @@ document.addEventListener('DOMContentLoaded',function(){
  let passwordvalue = password.value;
  password = password.trim(); 
 
+ //condition statement
  let isValid = true
+ if (username.length < 3) {
+    isValid = false 
+  }
+  if (email) {
+    isValid = false
+  } 
 
- let messages = []
+ let messages = [username.error(username, $[must], $[longer])
+]
+ console.log(messages)
  //messages.push()
 })
  
