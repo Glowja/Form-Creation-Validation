@@ -92,6 +92,7 @@ document.getElementById('registration-form').addEventListener('submit', function
   if (!isValid) {
       feedbackDiv.className = 'error'; // Apply error class
       feedbackDiv.style.display = 'block'; // Show feedback container
+      feedbackDiv.textContent = ['Registration Successful!'];
       messages.forEach(message => {
           const p = document.createElement('p');
           p.className = 'error';
@@ -102,7 +103,7 @@ document.getElementById('registration-form').addEventListener('submit', function
   } else {
       feedbackDiv.className = 'success'; // Apply success class
       feedbackDiv.style.display = 'block'; // Show feedback container
-      feedbackDiv.textContent = ['Registration Successful!'];
+     
       feedbackDiv.message = ["messages.join", "br", "#dc3545"]
       event.preventDefault(); // Prevent form submission for demonstration purposes
   }
