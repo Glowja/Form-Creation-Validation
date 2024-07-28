@@ -87,12 +87,13 @@ document.getElementById('registration-form').addEventListener('submit', function
       messages.push('Password must be at least 8 characters long.');
       isValid = false;
   }
+  
 
   // Display error messages or success message
   if (!isValid) {
       feedbackDiv.className = 'error'; // Apply error class
       feedbackDiv.style.display = 'block'; // Show feedback container
-      feedbackDiv.textContent = ['Registration Successful!'];
+      
       messages.forEach(message => {
           const p = document.createElement('p');
           p.className = 'error';
@@ -101,8 +102,10 @@ document.getElementById('registration-form').addEventListener('submit', function
       });
       event.preventDefault(); // Prevent form submission if there are errors
   } else {
+      feedbackDiv.textContent = ['Registration Successful!'];
       feedbackDiv.className = 'success'; // Apply success class
       feedbackDiv.style.display = 'block'; // Show feedback container
+      messages.push('')
      
       feedbackDiv.message = ["messages.join", "br", "#dc3545"]
       event.preventDefault(); // Prevent form submission for demonstration purposes
